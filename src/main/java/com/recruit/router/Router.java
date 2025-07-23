@@ -15,6 +15,10 @@ public class Router {
         map.put("main"      , new Route("header", "main/main", "footer"));
         map.put("validation", new Route("header", "validation/validation", "footer"));
         map.put("security"  , new Route("header", "security/security", "footer"));
+        map.put("popup"     , new Route("header", "popup/popup", "footer"));
+        
+        
+        
         
         
         

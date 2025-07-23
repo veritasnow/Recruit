@@ -1,10 +1,10 @@
 package com.recruit.router;
 
-/**
- * View 이름을 상수로 관리하는 클래스
- */
 public final class ViewConstants {
-    private ViewConstants() {}  // 인스턴스화 방지
+    private ViewConstants() {}
 
-    public static final String INDEX = "index";
+    public static final String INDEX        = "index";
+    public static final String POPUP_INDEX  = "popup/popup_index";
+    public static final String IFRAME_INDEX = "iframe/iframe_index";        
+    
 }

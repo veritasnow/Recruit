@@ -1,0 +1,16 @@
+<div th:fragment= "container">
+	<div id="containerIn">
+		<script th:src="@{/js/common/popup/popup.js}" type="text/javascript"></script>	
+		팝업창 띄우기
+
+		<script type="text/javascript">
+			function restTest() {
+				popupUtil.openPopupGet('/popup/popup-test', { id: 123, name: '홍길동' });
+			}
+		</script>
+		
+		<button onclick="restTest()">
+			rest테스트
+		</button>
+	</div>
+</div>
