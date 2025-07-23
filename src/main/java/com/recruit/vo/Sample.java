@@ -18,6 +18,6 @@ public class Sample {
 	public Sample(String id, String name) {
 		this.id   = id;
 		this.name = name;
-	}	
+	}
 	
 }

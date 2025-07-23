@@ -26,8 +26,7 @@ public class SampleController {
 
 		System.out.println("테스트..!!");
 		
-		Router router = Router.getInstance();
-		Route  route  = router.getRoute("main");
+		Route  route  = Router.getInstance().getRoute("main");
 		model.addAttribute("route", route);
 		
 		System.out.println("ViewConstants.INDEX : " + ViewConstants.INDEX);

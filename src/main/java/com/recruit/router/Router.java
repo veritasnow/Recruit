@@ -12,7 +12,14 @@ public class Router {
 
     private Router() {
         Map<String, Route> map = new HashMap<>();
-        map.put("main" , new Route("header", "main/main", "footer"));
+        map.put("main"      , new Route("header", "main/main", "footer"));
+        map.put("validation", new Route("header", "validation/validation", "footer"));
+        map.put("security"  , new Route("header", "security/security", "footer"));
+        
+        
+        
+                
+        
         //map.put("login", new Route("main/login"));
         //map.put("join" , new Route("main/join"));
         //map.put("redirect", new Route("redirect/redirect"));
