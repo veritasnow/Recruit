@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta th:if="${_csrf}" name="_csrf" th:content="${_csrf.token}"/>
+<meta th:if="${_csrf}" name="_csrf_header" th:content="${_csrf.headerName}"/>
+<meta th:if="${_csrf}" name="_csrf_parameter" th:content="${_csrf.parameterName}"/>
+<title>테스트</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- css -->
+<link rel="shortcut icon" href="http://assets.tumblr.com/images/favicons/favicon.ico?1">
+<link th:href="@{/css/notosanskr.css}" rel="stylesheet">
+<link th:href="@{/css/reset.css}"      rel="stylesheet">
+<link th:href="@{/css/style.css}"      rel="stylesheet">
+
+<!-- js -->
+<script th:src="@{/js/common/rest.js}" type="text/javascript"></script>		
+
+<!-- modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<script type="text/javascript" th:inline="javascript">
+$(document).ready(function() {
+    var token  = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });	
+});
+</script>
+</head>
+
+
+<body>
+<div id="wrap">
+	<header th:include="header :: header" id="header"   th:if="${route.header != null}"></header>  <!--#header-->
+   	<div    th:include="${route.container} :: container" id="container"></div>                     <!--#container-->
+	<footer th:include="footer :: footer" id="footer"   th:if="${route.footer != null}"></footer>  <!--#footer--> 
+</div>
+</body>
+</html>

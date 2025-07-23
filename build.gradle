@@ -1,0 +1,69 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group   = 'com.recruit'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot 기본 웹, thymeleaf, jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	
+	// Validation (JSR 380 지원)
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	// AOP 및 spring aspects
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation group: 'org.springframework', name: 'spring-aspects', version: '4.2.5.RELEASE'
+
+	// 데이터베이스
+	runtimeOnly 'com.h2database:h2'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0' // mariadb 드라이버
+
+	// 기타 라이브러리
+	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+	compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+	compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+	// 로깅
+	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+
+	// 개발용, 컴파일 전용 라이브러리
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// 테스트
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
+	// 외부 lib jar 포함
+	implementation fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+test {
+	useJUnitPlatform()
+}
