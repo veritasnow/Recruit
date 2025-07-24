@@ -1,6 +1,10 @@
 @charset "utf-8";
 
-
+/*reset용 아님*/
+html, body, #wrap, #container, #containerIn {
+  height: 100%;
+  overflow: hidden; /* 화면 전체 스크롤 막기 */
+}
 
 #wrap {
 	position: relative;
@@ -35,7 +39,7 @@
 }
 
 #containerIn {
-	max-width: 1600px;
+	/*max-width: 1600px;*/
 	min-height: 100%;
 	margin-left: auto;
 	margin-right: auto;

@@ -47,10 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		log.info("------------------------Secrurity Configure Start---------------------------");
 
-		http.addFilterBefore(cspHeaderFilter   , BasicAuthenticationFilter.class)
-			.addFilterBefore(xssFilter         , BasicAuthenticationFilter.class)
+		http
+			.addFilterBefore(cspHeaderFilter, BasicAuthenticationFilter.class)
+			.addFilterBefore(xssFilter, BasicAuthenticationFilter.class)
 			.addFilterBefore(sqlInjectionFilter, BasicAuthenticationFilter.class)
 			.authorizeRequests(auth -> auth.anyRequest().permitAll());
+
+		http.headers().frameOptions().sameOrigin(); // iframe을 사용하지 않을 경우 제외할것
 		
 		/*
 		 * 로그인 비활성화

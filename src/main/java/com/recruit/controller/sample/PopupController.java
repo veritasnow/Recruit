@@ -1,4 +1,4 @@
-package com.recruit.controller;
+package com.recruit.controller.sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

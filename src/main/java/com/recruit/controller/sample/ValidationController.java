@@ -1,4 +1,4 @@
-package com.recruit.controller;
+package com.recruit.controller.sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +14,15 @@ import com.recruit.router.ViewConstants;
 public class ValidationController {
 
     /**
-     * 유효성 검사 입력 폼 페이지 리턴
+     * 유효성 검사 입력 폼 페이지
      */
-    @GetMapping("/form")
-    public String showValidationForm(Model model) {
+    @GetMapping("/sample")
+    public String sample(Model model) {
+    	
+    	System.out.println("sample 입력폼페이지 접근...!!");
+    	
         Route route = Router.getInstance().getRoute("validation");
         model.addAttribute("route", route);
-        return ViewConstants.INDEX;
+        return ViewConstants.IFRAME_INDEX;
     }
-
 }

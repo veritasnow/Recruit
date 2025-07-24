@@ -22,6 +22,129 @@
 <link rel="stylesheet" href="/css/jquery.modal.min.css" />
 
 
+
+<style>
+  /* 사이드바 */
+  #sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+    overflow-y: auto;
+  }
+  #sidebar h5 {
+    margin: 0; padding: 16px 0; text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #495057;
+  }
+  #sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  #sidebar li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  #sidebar li:hover {
+    background-color: #495057;
+  }
+
+  /* 메인 영역 */
+  #main {
+    margin-left: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 탭바 */
+  #tab-bar {
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 42px;
+    user-select: none;
+  }
+  #tabs {
+    display: flex;
+    overflow-x: auto;
+    flex-grow: 1;
+    scrollbar-width: none; /* Firefox */
+  }
+  #tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .tab {
+    padding: 8px 16px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-right: 2px;
+    position: relative;
+    background-color: #e9ecef;
+    font-size: 14px;
+    color: #495057;
+    transition: background-color 0.2s ease;
+  }
+  .tab:hover {
+    background-color: #ced4da;
+  }
+  .tab.active {
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 white;
+    font-weight: 600;
+    color: #212529;
+  }
+  .tab .close-btn {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #6c757d;
+  }
+  .tab .close-btn:hover {
+    color: #dc3545;
+  }
+
+  /* iframe 영역 */
+  #iframe-container {
+    flex-grow: 1;
+    background-color: white;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+  }
+
+  /* 좌우 스크롤 버튼 */
+  #scroll-left, #scroll-right {
+    padding: 0 10px;
+    cursor: pointer;
+    color: #495057;
+    user-select: none;
+    font-weight: bold;
+    font-size: 18px;
+    user-select: none;
+  }
+  #scroll-left:hover, #scroll-right:hover {
+    color: #212529;
+  }
+</style>
+</head>
+
+
+
+
 <body>
 <div id="wrap">
 	<header th:include="header :: header" id="header"   th:if="${route.header != null}"></header>  <!--#header-->
