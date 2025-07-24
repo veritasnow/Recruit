@@ -17,7 +17,7 @@ public class Router {
         map.put("security"  , new Route("header", "security/security", "footer"));
         map.put("popup"     , new Route("header", "popup/popup", "footer"));
         map.put("pdf"       , new Route("header", "sample/pdf/pdf", "footer"));
-        map.put("excel"       , new Route("header", "sample/excel/excel", "footer"));
+        map.put("excel"     , new Route("header", "sample/excel/excel", "footer"));
                 
         
         //map.put("login", new Route("main/login"));
