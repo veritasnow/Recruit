@@ -77,6 +77,40 @@ const restApi = {
 
 	delete: function (urlLink, data) {
 		return this.request('DELETE', urlLink, data);
+	},
+	
+	// 파일 업로드
+	fileUpload: function (urlLink, formData) {
+		// 최초 요청 시 토큰 자동 세팅
+		if (!this.token.csrfToken || !this.token.csrfHeader) {
+			this.initToken();
+		}
+
+		// 요청 헤더 설정
+		const headers = {};
+		if (this.token.csrfToken && this.token.csrfHeader) {
+			headers[this.token.csrfHeader] = this.token.csrfToken;
+		}
+		if (this.token.authToken) {
+			headers['Authorization'] = `Bearer ${this.token.authToken}`;
+		}
+
+		return $.ajax({
+			type: "POST",
+			url: urlLink,
+			dataType: 'json',
+			contentType: false,
+			processData: false,
+			headers: headers,
+			data: formData,
+		}).fail(function (jqXHR) {
+			let message = jqXHR.responseText || '알 수 없는 에러가 발생했습니다.';
+			try {
+				const res = JSON.parse(jqXHR.responseText);
+				if (res.message) message = res.message;
+			} catch (e) {}
+			alert('파일 업로드 실패: ' + message);
+		});
 	}
 };
 

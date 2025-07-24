@@ -1,0 +1,33 @@
+<div th:fragment= "container">
+	<div id="containerIn">
+		excel 업로드 테스트 팝업창
+
+		<form id="excelUploadForm" enctype="multipart/form-data">
+			<input type="file" id="excelFile" name="file" accept=".xlsx,.xls" />		
+			<button type="button" onclick="uploadExcel()">업로드</button>	
+		</form>
+		
+		<pre id="result"></pre>
+
+		<script type="text/javascript">
+			function uploadExcel() {
+				const formData = new FormData();
+				const fileInput = $("#excelFile")[0];
+				
+				if (!fileInput || !fileInput.files.length) {
+					alert("파일을 선택해주세요.");
+					return;
+				}
+				
+				formData.append("file", fileInput.files[0]);
+				
+				restApi.fileUpload("/excel/upload", formData)
+					.done(function (res) {
+						alert("✅ 업로드 성공: " + res.message);
+						console.log("내용:", res.content);
+					});
+			}
+		</script>
+	</div>
+</div>
+
