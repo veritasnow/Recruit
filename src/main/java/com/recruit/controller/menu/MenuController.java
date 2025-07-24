@@ -39,7 +39,7 @@ public class MenuController {
 	    List<MenuListResponseDto> result = new ArrayList<>();
 
 	    // 2. 항목 추가
-	    result.add(new MenuListResponseDto("validSample", "유효성검증 샘플", "sample/validation"));
+	    result.add(new MenuListResponseDto("validSample", "유효성검증 샘플", "validation/sample"));
 	    result.add(new MenuListResponseDto("sample2", "샘플2", "sample/page2"));
 	    result.add(new MenuListResponseDto("sample3", "샘플3", "sample/page3"));
 

@@ -12,14 +12,28 @@ public class Router {
 
     private Router() {
         Map<String, Route> map = new HashMap<>();
+        
+        // 1. main용 라우터목록
         map.put("main"      , new Route("header", "main/main", "footer"));
-        map.put("validation", new Route("header", "sample/validation/validation", "footer"));
         map.put("security"  , new Route("header", "security/security", "footer"));
         map.put("popup"     , new Route("header", "sample/popup/popup", "footer"));
         map.put("pdf"       , new Route("header", "sample/pdf/pdf", "footer"));
         map.put("excel"     , new Route("header", "sample/excel/excel", "footer"));
         map.put("file"      , new Route("header", "sample/file/file", "footer"));
                 
+
+        
+
+        
+        
+        
+        
+        //2. iframe 라우터목록
+        map.put("validation", new Route("iframe/sample/validation/validation"));
+        
+        
+        
+        
         
         //map.put("login", new Route("main/login"));
         //map.put("join" , new Route("main/join"));
