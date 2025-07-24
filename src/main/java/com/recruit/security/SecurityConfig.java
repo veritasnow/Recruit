@@ -1,11 +1,17 @@
 package com.recruit.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+import com.recruit.security.filter.CspHeaderFilter;
+import com.recruit.security.filter.SqlInjectionFilter;
+import com.recruit.security.filter.XssFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,6 +19,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	/**
+     * CSP 헤더 Filter Field
+     */
+	@Autowired
+	private CspHeaderFilter cspHeaderFilter;
+	
+	/**
+     * XSS Filter Field
+     */
+	@Autowired
+	private XssFilter xssFilter;
+	
+	/**
+     * CSP 헤더 필터 Filter Field
+     */
+	@Autowired
+	private SqlInjectionFilter sqlInjectionFilter;
+	
 	// 스프링 시큐리티 로그인 기능 구현시 암호화
 	@Bean
 	PasswordEncoder passwordEncoder() {
@@ -23,10 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		log.info("------------------------Secrurity Configure Start---------------------------");
 
-	    http
-        .csrf().and()  // CSRF 토큰 활성화 (기본값은 활성화 상태)
-        .authorizeRequests()
-        .anyRequest().permitAll();  // 모든 요청 인증 없이 허용		
+		http.addFilterBefore(cspHeaderFilter   , BasicAuthenticationFilter.class)
+			.addFilterBefore(xssFilter         , BasicAuthenticationFilter.class)
+			.addFilterBefore(sqlInjectionFilter, BasicAuthenticationFilter.class)
+			.authorizeRequests(auth -> auth.anyRequest().permitAll());
 		
 		/*
 		 * 로그인 비활성화
