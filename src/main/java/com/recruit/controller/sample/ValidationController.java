@@ -1,4 +1,4 @@
-package com.recruit.controller;
+package com.recruit.controller.sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,15 +10,15 @@ import com.recruit.router.Router;
 import com.recruit.router.ViewConstants;
 
 @Controller
-@RequestMapping("/security")
-public class SecurityController {
+@RequestMapping("/validation")
+public class ValidationController {
 
     /**
-     * 보안관련
+     * 유효성 검사 입력 폼 페이지 리턴
      */
     @GetMapping("/form")
     public String showValidationForm(Model model) {
-        Route route = Router.getInstance().getRoute("security");
+        Route route = Router.getInstance().getRoute("validation");
         model.addAttribute("route", route);
         return ViewConstants.INDEX;
     }

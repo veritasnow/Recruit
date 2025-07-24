@@ -13,9 +13,9 @@ public class Router {
     private Router() {
         Map<String, Route> map = new HashMap<>();
         map.put("main"      , new Route("header", "main/main", "footer"));
-        map.put("validation", new Route("header", "validation/validation", "footer"));
+        map.put("validation", new Route("header", "sample/validation/validation", "footer"));
         map.put("security"  , new Route("header", "security/security", "footer"));
-        map.put("popup"     , new Route("header", "popup/popup", "footer"));
+        map.put("popup"     , new Route("header", "sample/popup/popup", "footer"));
         map.put("pdf"       , new Route("header", "sample/pdf/pdf", "footer"));
         
                 
