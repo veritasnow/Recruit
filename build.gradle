@@ -41,6 +41,9 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0' // mariadb 드라이버
 
+	// XSS 방지를 위한 String Escape
+	implementation 'org.apache.commons:commons-text:1.8'
+
 	// 기타 라이브러리
 	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 	compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
