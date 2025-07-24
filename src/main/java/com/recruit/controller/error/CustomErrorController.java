@@ -1,4 +1,4 @@
-package com.recruit.error;
+package com.recruit.controller.error;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
