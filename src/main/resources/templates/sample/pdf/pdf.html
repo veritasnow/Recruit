@@ -1,0 +1,16 @@
+<div th:fragment= "container">
+	<div id="containerIn">
+		<script th:src="@{/js/common/popup/popup.js}" type="text/javascript"></script>	
+		pdf테스트 팝업창
+
+		<script type="text/javascript">
+			function restTest() {
+				popupUtil.openPopupGet('/pdf/popup', {});
+			}
+		</script>
+		
+		<button onclick="restTest()">
+			자기소개서 view
+		</button>	
+	</div>
+</div>

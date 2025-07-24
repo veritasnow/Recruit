@@ -16,11 +16,7 @@ public class Router {
         map.put("validation", new Route("header", "validation/validation", "footer"));
         map.put("security"  , new Route("header", "security/security", "footer"));
         map.put("popup"     , new Route("header", "popup/popup", "footer"));
-        
-        
-        
-        
-        
+        map.put("pdf"       , new Route("header", "sample/pdf/pdf", "footer"));
         
                 
         
